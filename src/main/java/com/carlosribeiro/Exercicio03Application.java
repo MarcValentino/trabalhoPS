@@ -1,7 +1,7 @@
 package com.carlosribeiro;
 
-import com.carlosribeiro.modelo.Produto;
-import com.carlosribeiro.servico.ProdutoService;
+import com.carlosribeiro.modelo.Autor;
+import com.carlosribeiro.servico.AutorService;
 import com.carlosribeiro.util.Util;
 import corejava.Console;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import java.util.List;
 public class Exercicio03Application implements CommandLineRunner {
 
 	@Autowired
-	private ProdutoService produtoService;
+	private AutorService autorService;
 
 	public static void main(String[] args) {
 
@@ -25,17 +25,16 @@ public class Exercicio03Application implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		String nome;
-		double lanceMinimo;
-		String dataCadastro;
-		Produto umProduto;
+		String lanceMinimo;
+		Autor umAutor;
 
 		boolean continua = true;
 		while (continua) {
 			System.out.println('\n' + "O que você deseja fazer?");
-			System.out.println('\n' + "1. Cadastrar um produto");
-			System.out.println("2. Alterar um produto");
-			System.out.println("3. Remover um produto");
-			System.out.println("4. Listar todos os produtos");
+			System.out.println('\n' + "1. Cadastrar um autor");
+			System.out.println("2. Alterar um autor");
+			System.out.println("3. Remover um autor");
+			System.out.println("4. Listar todos os autores");
 			System.out.println("5. Sair");
 
 			int opcao = Console.readInt('\n' +
@@ -44,18 +43,16 @@ public class Exercicio03Application implements CommandLineRunner {
 			switch (opcao) {
 				case 1 -> {
 					nome = Console.readLine('\n' +
-							"Informe o nome do produto: ");
-					lanceMinimo = Console.readDouble(
-							"Informe o valor do lance mínimo: ");
-					dataCadastro = Console.readLine(
-							"Informe a data de cadastramento do produto: ");
+							"Informe o nome do autor: ");
+					lanceMinimo = Console.readLine(
+							"Informe o nome da instituição: ");
 
-					umProduto = new Produto(nome, lanceMinimo, Util.strToLocalDate(dataCadastro));
+					umAutor = new Autor(nome, lanceMinimo);
 
-					produtoService.inclui(umProduto);
+					autorService.inclui(umAutor);
 
-					System.out.println('\n' + "Produto número " +
-							umProduto.getId() + " incluído com sucesso!");
+					System.out.println('\n' + "Autor número " +
+							umAutor.getId() + " incluído com sucesso!");
 
 				}
 				case 2 -> {
@@ -65,14 +62,13 @@ public class Exercicio03Application implements CommandLineRunner {
 
 				}
 				case 4 -> {
-					List<Produto> produtos = produtoService.recuperaProdutos();
+					List<Autor> autores = autorService.recuperaAutores();
 
-					for (Produto produto : produtos) {
+					for (Autor autor : autores) {
 						System.out.println('\n' +
-								"Id = " + produto.getId() +
-								"  Nome = " + produto.getNome() +
-								"  Lance mínimo = " + Util.doubleToStr(produto.getLanceMinimo()) +
-								"  Data Cadastro = " + Util.dateToStr(produto.getDataCadastro()));
+								"Id = " + autor.getId() +
+								"  Nome = " + autor.getNome() +
+								"  Instituição = " + autor.getInstituicao());
 					}
 
 				}
