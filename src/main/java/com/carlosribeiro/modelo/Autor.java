@@ -1,10 +1,14 @@
 package com.carlosribeiro.modelo;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import java.time.LocalDate;
 
 @Entity
+@DynamicUpdate
+@DynamicInsert
 @Table(name="autor")
 
 public class Autor
@@ -12,8 +16,6 @@ public class Autor
     private Long id;
     private String nome;
     private String instituicao;
-
-
 
     private int versao;
 

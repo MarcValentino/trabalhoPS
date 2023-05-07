@@ -56,7 +56,14 @@ public class Exercicio03Application implements CommandLineRunner {
 
 				}
 				case 2 -> {
-
+					int resposta = Console.readInt('\n' +
+							"Digite o número do autor que você deseja alterar: ");
+					try{
+						autorService.alterarAutor(resposta);
+					}
+					catch (Exception e){
+						System.out.println(e.getMessage());
+					}
 				}
 				case 3 -> {
 
