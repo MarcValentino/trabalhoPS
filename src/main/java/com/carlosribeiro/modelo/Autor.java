@@ -13,6 +13,10 @@ public class Autor
     private String nome;
     private String instituicao;
 
+
+
+    private int versao;
+
     // ********* Construtores *********
 
     public Autor()
@@ -47,7 +51,7 @@ public class Autor
     {	return nome;
     }
 
-    @Column(name="LANCE_MINIMO")
+    @Column(name="instituicao")
     public String getInstituicao()
     {	return instituicao;
     }
@@ -64,6 +68,14 @@ public class Autor
 
     public void setInstituicao(String instituicao)
     {	this.instituicao = instituicao;
+    }
+    @Version
+    public int getVersao() {
+        return versao;
+    }
+
+    public void setVersao(int versao) {
+        this.versao = versao;
     }
 }
 
