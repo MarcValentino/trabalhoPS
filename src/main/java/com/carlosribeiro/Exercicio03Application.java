@@ -66,7 +66,9 @@ public class Exercicio03Application implements CommandLineRunner {
 					}
 				}
 				case 3 -> {
-
+					int resposta = Console.readInt('\n' +
+							"Digite o número do autor que você deseja remover: ");
+					autorService.removerAutor(resposta);
 				}
 				case 4 -> {
 					List<Autor> autores = autorService.recuperaAutores();

@@ -56,6 +56,9 @@ public class AutorService {
         }
 
     }
+    public void removerAutor(long id) {
+        autorRepository.deleteById(id);
+    }
     public List<Autor> recuperaAutores() {
         return autorRepository.findAll(Sort.by("id"));
     }
