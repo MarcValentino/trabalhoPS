@@ -1,4 +1,4 @@
-package com.carlosribeiro.exception;
+package com.marcelo.exception;
 
 public class AutorNaoEncontradoException extends Exception{
     private final static long serialVersionUID = 1;

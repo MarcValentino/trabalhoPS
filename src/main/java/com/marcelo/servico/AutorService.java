@@ -1,9 +1,9 @@
-package com.carlosribeiro.servico;
+package com.marcelo.servico;
 
-import com.carlosribeiro.exception.AutorNaoEncontradoException;
-import com.carlosribeiro.exception.EstadoDeObjetoObsoletoException;
-import com.carlosribeiro.modelo.Autor;
-import com.carlosribeiro.repository.AutorRepository;
+import com.marcelo.exception.AutorNaoEncontradoException;
+import com.marcelo.exception.EstadoDeObjetoObsoletoException;
+import com.marcelo.modelo.Autor;
+import com.marcelo.repository.AutorRepository;
 import corejava.Console;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -56,9 +56,18 @@ public class AutorService {
         }
 
     }
+
+    public List<Autor> buscaAutor(){
+        int escolha = Console.readInt("Selecione uma opção:\n1.Por nome\n2.Por instituição\n");
+        String input = Console.readLine("Digite: \n");
+        if(escolha == 1) return autorRepository.buscaAutorPorNome(input);
+        else return autorRepository.buscaAutorPorInstituicao(input);
+    }
+
     public void removerAutor(long id) {
         autorRepository.deleteById(id);
     }
+
     public List<Autor> recuperaAutores() {
         return autorRepository.findAll(Sort.by("id"));
     }

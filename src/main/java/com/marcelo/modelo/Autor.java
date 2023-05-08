@@ -1,10 +1,8 @@
-package com.carlosribeiro.modelo;
+package com.marcelo.modelo;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
-
-import java.time.LocalDate;
 
 @Entity
 @DynamicUpdate
@@ -37,6 +35,7 @@ public class Autor
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", instituicao=" + instituicao +
+                ", versao=" + versao +
                 '}';
     }
 
